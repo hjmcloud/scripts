@@ -7,12 +7,18 @@
 ###############################################################################
 # 出错退出
 set -e
-# 获取参数设为版本号
+# 获取第一个参数设为版本号
 VERSION=$1
 # 判断版本号参数是否为空
 if [ -z "$VERSION" ]; then
     echo "请输入版本号"
     exit 1
+fi
+# 获取第二个参数为镜像地址前缀
+PREFIX=$2
+# 判断镜像地址前缀参数是否为空
+if [ -z "$PREFIX" ]; then
+    PREFIX="https://go.dev/dl"
 fi
 echo "version: $VERSION"
 # 判断当前用户是否为root，不是则退出
@@ -47,8 +53,7 @@ else
     exit
 fi
 # 安装Golang
-# echo https://go.dev/dl/go${VERSION}.$OS-$ARCH.tar.gz -o /tmp/go${VERSION}.$OS-$ARCH.tar.gz
-curl -L https://go.dev/dl/go${VERSION}.$OS-$ARCH.tar.gz -o /tmp/go${VERSION}.$OS-$ARCH.tar.gz
+curl -L $PREFIX/go${VERSION}.$OS-$ARCH.tar.gz -o /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 tar -C /usr/local -xzf /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 # 删除临时文件
 rm -f /tmp/go${VERSION}.$OS-$ARCH.tar.gz

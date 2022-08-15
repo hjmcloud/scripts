@@ -10,5 +10,5 @@ curl -sSl https://raw.githubusercontent.com/hjmcloud/scripts/master/golang/golan
 
 ### CDN
 ```bash
-curl -sSl https://cdn.jsdelivr.net/gh/hjmcloud/scripts@master/golang/golang-install.sh | sh -s 1.19
+curl -sSl https://cdn.jsdelivr.net/gh/hjmcloud/scripts@master/golang/golang-install.sh | sh -s 1.19 https://mirrors.aliyun.com/golang
 ```
