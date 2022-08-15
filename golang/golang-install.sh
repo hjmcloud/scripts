@@ -47,10 +47,10 @@ else
     exit
 fi
 # 安装Golang
-curl -L https://go.dev/dl/go$VERSION.$OS-$ARCH.tar.gz -o /tmp/go$VERSION.$OS-$ARCH.tar.gz
-tar -C /usr/local -xzf /tmp/go$VERSION.$OS-$ARCH.tar.gz
+curl -L https://go.dev/dl/go${VERSION}.$OS-$ARCH.tar.gz -o /tmp/go${VERSION}.$OS-$ARCH.tar.gz
+tar -C /usr/local -xzf /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 # 删除临时文件
-rm -f /tmp/go$VERSION.$OS-$ARCH.tar.gz
+rm -f /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 # 配置环境变量
 echo "export PATH=$PATH:/usr/local/go/bin" >>/etc/profile
 echo "Please reboot or run this command: export PATH=\$PATH:/usr/local/go/bin"
