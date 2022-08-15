@@ -54,8 +54,8 @@ else
     exit
 fi
 # 安装Golang
-ECHO "Download Golang..."
-ECHO $PREFIX/go${VERSION}.$OS-$ARCH.tar.gz
+echo "Download Golang..."
+echo $PREFIX/go${VERSION}.$OS-$ARCH.tar.gz
 curl -L $PREFIX/go${VERSION}.$OS-$ARCH.tar.gz -o /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 tar -C /usr/local -xzf /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 # 删除临时文件
