@@ -8,13 +8,13 @@
 # 出错退出
 set -e
 # 获取参数设为版本号
-version=$1
+VERSION=$1
 # 判断版本号参数是否为空
-if [ -z "$version" ]; then
+if [ -z "$VERSION" ]; then
     echo "请输入版本号"
     exit 1
 fi
-echo "version: $version"
+echo "version: $VERSION"
 # 判断当前用户是否为root，不是则退出
 if [ $(id -u) != "0" ]; then
     echo "Error: You must be root to run this script, please use root to install, you can use the command: sudo -i to login root user"
@@ -32,21 +32,22 @@ if [ $OS != "Linux" ]; then
     exit
 fi
 # 获取CPU类型
-CPU=$(uname -m)
+ARCH=$(uname -m)
 # 转换CPU类型为go env arch格式
-if [ $CPU = "x86_64" ]; then
-    CPU="amd64"
-elif [ $CPU = "i686" ]; then
-    CPU="386"
-elif [ $CPU = "armv6l" ]; then
-    CPU="armv6l"
-elif [ $CPU = "aarch64" ]; then
-    CPU="arm64"
+if [ $ARCH = "x86_64" ]; then
+    ARCH="amd64"
+elif [ $ARCH = "i686" ]; then
+    ARCH="386"
+elif [ $ARCH = "armv6l" ]; then
+    ARCH="armv6l"
+elif [ $ARCH = "aarch64" ]; then
+    ARCH="arm64"
 else
     echo "Not support CPU, exit..."
     exit
 fi
 # 安装Golang
+# echo https://go.dev/dl/go${VERSION}.$OS-$ARCH.tar.gz -o /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 curl -L https://go.dev/dl/go${VERSION}.$OS-$ARCH.tar.gz -o /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 tar -C /usr/local -xzf /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 # 删除临时文件
