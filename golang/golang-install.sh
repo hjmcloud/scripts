@@ -14,13 +14,14 @@ if [ -z "$VERSION" ]; then
     echo "请输入版本号"
     exit 1
 fi
+echo "version: $VERSION"
 # 获取第二个参数为镜像地址前缀
 PREFIX=$2
 # 判断镜像地址前缀参数是否为空
 if [ -z "$PREFIX" ]; then
     PREFIX="https://go.dev/dl"
 fi
-echo "version: $VERSION"
+echo "prefix: $PREFIX"
 # 判断当前用户是否为root，不是则退出
 if [ $(id -u) != "0" ]; then
     echo "Error: You must be root to run this script, please use root to install, you can use the command: sudo -i to login root user"
@@ -53,6 +54,8 @@ else
     exit
 fi
 # 安装Golang
+ECHO "Download Golang..."
+ECHO $PREFIX/go${VERSION}.$OS-$ARCH.tar.gz
 curl -L $PREFIX/go${VERSION}.$OS-$ARCH.tar.gz -o /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 tar -C /usr/local -xzf /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 # 删除临时文件
