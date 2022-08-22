@@ -40,7 +40,6 @@ if [ $OS != "Linux" ]; then
 else
     OS="linux"
 fi
-typeset -l $OS
 # 获取CPU类型
 ARCH=$(uname -m)
 # 转换CPU类型为go env arch格式
