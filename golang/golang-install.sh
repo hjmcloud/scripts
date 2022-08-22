@@ -65,4 +65,9 @@ tar -C /usr/local -xzf /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 rm -f /tmp/go${VERSION}.$OS-$ARCH.tar.gz
 # 配置环境变量
 echo "export PATH=$PATH:/usr/local/go/bin" >>/etc/profile
+source /etc/profile
+echo "export PATH=$PATH:$(go env GOPATH)/bin" >>/etc/profile
+source /etc/profile
+
+
 echo "Please reboot or run this command: export PATH=\$PATH:/usr/local/go/bin"
